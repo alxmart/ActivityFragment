@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this,
                 DetalhesActivity::class.java)
-            // Inicia nova tela
+            // Start new screen
             startActivity(intent)
         }
     }
