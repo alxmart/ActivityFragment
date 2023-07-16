@@ -11,19 +11,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.i("ciclo_vida", "onCreate")   //<= Mensagem p/onCreate
+        Log.i("ciclo_vida", "onCreate")
 
         setContentView(R.layout.activity_main)
 
         buttonAbrir = findViewById(R.id.button_abrir)
-
         buttonAbrir.setOnClickListener {
+            val intent = Intent(this, DetalhesActivity::class.java)
 
-            val intent = Intent(this,
-                DetalhesActivity::class.java)
-            // Start new screen
+            // Passar parâmetros para nova tela
+            intent.putExtra("filme","The Witcher")
+            intent.putExtra("classificacao",5)
+            intent.putExtra("avaliacoes",9.2)
+
+            // Iniciar uma nova tela
             startActivity(intent)
         }
+
     }
     override  fun onStart() {
         super.onStart()
