@@ -20,14 +20,17 @@ class DetalhesActivity : AppCompatActivity() {
 
         if (bundle != null) {
 
-            val filme = bundle.getString("filme")
-            val classificacao = bundle.getInt("classificacao")
-            val avaliacoes = bundle.getDouble("avaliacoes")
+//            val filme = bundle.getString("filme")
+//            val classificacao = bundle.getInt("classificacao")
+//            val avaliacoes = bundle.getDouble("avaliacoes")
 
-            val resultado =
-                "filme: $filme - class: $classificacao - aval:$avaliacoes"
+            // Vai de-serializar , como um objeto Filme :
+            //val filme = bundle.getSerializable("filme") as Filme
+            val filme = bundle.getParcelable<Filme>("filme")
 
-            textFilme.text = resultado
+            //val resultado= "filme: $filme - class: $classificacao - aval:$avaliacoes"
+
+            textFilme.text = "${filme?.nome} - ${filme?.distribuidor}"
         }
 
         buttonFechar.setOnClickListener {
