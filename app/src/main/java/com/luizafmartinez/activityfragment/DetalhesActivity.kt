@@ -1,5 +1,6 @@
 package com.luizafmartinez.activityfragment
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,14 +26,21 @@ class DetalhesActivity : AppCompatActivity() {
             val classificacao = bundle.getInt("classificacao")
             val avaliacoes = bundle.getDouble("avaliacoes")*/
 
-            val filme = bundle.getSerializable("filme") as Filme
+            val filme = if(Build.VERSION.SDK_INT >= 33) { // Versão >= 33
+                bundle.getSerializable("filme",Filme::class.java)
+            } else {
+                bundle.getSerializable("filme") as Filme
+            }
+
+            //val filme = bundle.getSerializable("filme") as Filme
+
             //.getSerializable => depreciado quando usa só um parâmetro
             // Novo .getSerializable c/ string e clazz só funciona a partir
             // da versão 33 - Tiramisu
 
             //val resultado ="Filme: $filme, Classif.: $classificacao, Aval.: $avaliacoes"
 
-            textFilme.text = "$filme."
+            textFilme.text = "${filme?.nome} - ${filme?.distribuidor}"
         }
 
         buttonFechar.setOnClickListener {
