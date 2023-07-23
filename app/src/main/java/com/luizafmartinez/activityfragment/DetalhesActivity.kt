@@ -27,9 +27,11 @@ class DetalhesActivity : AppCompatActivity() {
             val avaliacoes = bundle.getDouble("avaliacoes")*/
 
             val filme = if(Build.VERSION.SDK_INT >= 33) { // Versão >= 33
-                bundle.getSerializable("filme",Filme::class.java)
+                //bundle.getSerializable("filme",Filme::class.java)
+                bundle.getParcelable("filme", Filme::class.java)
             } else {
-                bundle.getSerializable("filme") as Filme
+                //bundle.getSerializable("filme") as Filme
+                bundle.getParcelable("filme")
             }
 
             //val filme = bundle.getSerializable("filme") as Filme
