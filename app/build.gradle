@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
 }
-
+0
 android {
     namespace 'com.luizafmartinez.activityfragment'
     compileSdk 33
