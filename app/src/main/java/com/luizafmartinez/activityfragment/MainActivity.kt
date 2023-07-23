@@ -1,75 +1,67 @@
 package com.luizafmartinez.activityfragment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     lateinit var buttonAbrir: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.i("ciclo_vida", "onCreate")
+        Log.i("Ciclo de vida:", "onCreate")
 
         setContentView(R.layout.activity_main)
 
         buttonAbrir = findViewById(R.id.button_abrir)
+
         buttonAbrir.setOnClickListener {
-            val intent = Intent(this, DetalhesActivity::class.java)
 
-//            // Passar parâmetros para nova tela
-//            intent.putExtra("filme","The Witcher")
-//            intent.putExtra("classificacao",5)
-//            intent.putExtra("avaliacoes",9.2)
+            // finish()
 
-            val filme = Filme(
-                "Sem limites",
-                "Teste",
-                4.8,
-                "Jamilton",
-             "Netflix"
+            val intent = Intent(
+                this,
+                DetalhesActivity::class.java
             )
-            intent.putExtra("filme", filme)
-
+            // Passar parâmetros para nova tela
+            intent.putExtra("filme","The Witcher")
+            intent.putExtra("classificacao",5)
+            intent.putExtra("avaliacoes",9.2)
 
             // Iniciar uma nova tela
             startActivity(intent)
         }
-
     }
-    override  fun onStart() {
+    override fun onStart() {
         super.onStart()
-        //Simula -> carregar dados
-        Log.i("ciclo_Vida", "onStart")
+        // Carregar dados...
+        Log.i("Ciclo de vida: ", "onStart")
     }
     override fun onResume() {
         super.onResume()
-        Log.i("ciclo_Vida", "onResume")
+        Log.i("Ciclo de vida: ", "onResume")
     }
     override fun onPause() {
         super.onPause()
-        Log.i("ciclo_Vida", "onPause")
+        Log.i("Ciclo de vida: ", "onPause")
     }
     override fun onStop() {
         super.onStop()
-        Log.i("ciclo_Vida", "onStop")
+        Log.i("Ciclo de vida: ", "onStop")
     }
     override fun onRestart() {
         super.onRestart()
-        Log.i("ciclo_Vida", "onRestart")
+        Log.i("Ciclo de vida: ", "onRestart")
     }
     override fun onDestroy() {
-        Log.i("ciclo_Vida", "onDestroy")
+        Log.i("Ciclo de vida: ", "onDestroy")
         super.onDestroy()
-        Log.i("ciclo_Vida", "onDestroy")
     }
 
+
 }
-
-
-
 
 
 
