@@ -20,13 +20,19 @@ class DetalhesActivity : AppCompatActivity() {
         val bundle = intent.extras //Todos os parâmetros passados
 
         if (bundle != null) {
-            val filme = bundle.getString("filme")
-            val classificacao = bundle.getInt("classificacao")
-            val avaliacoes = bundle.getDouble("avaliacoes")
-            val resultado =
-             "Filme: $filme, Classif.: $classificacao, Aval.: $avaliacoes"
 
-            textFilme.text = resultado
+            /*val filme = bundle.getString("filme")
+            val classificacao = bundle.getInt("classificacao")
+            val avaliacoes = bundle.getDouble("avaliacoes")*/
+
+            val filme = bundle.getSerializable("filme") as Filme
+            //.getSerializable => depreciado quando usa só um parâmetro
+            // Novo .getSerializable c/ string e clazz só funciona a partir
+            // da versão 33 - Tiramisu
+
+            //val resultado ="Filme: $filme, Classif.: $classificacao, Aval.: $avaliacoes"
+
+            textFilme.text = "$filme."
         }
 
         buttonFechar.setOnClickListener {
