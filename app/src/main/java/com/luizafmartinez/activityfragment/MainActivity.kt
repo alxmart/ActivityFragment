@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     lateinit var buttonAbrir: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -16,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonAbrir = findViewById(R.id.button_abrir)
-
         buttonAbrir.setOnClickListener {
 
             // finish()
@@ -25,11 +25,14 @@ class MainActivity : AppCompatActivity() {
                 this,
                 DetalhesActivity::class.java
             )
-            // Passar parâmetros para nova tela
-//            intent.putExtra("filme","The Witcher")
-//            intent.putExtra("classificacao",5)
-//            intent.putExtra("avaliacoes",9.2)
 
+            // Passar parâmetros para nova tela
+            //-----------------------------------
+            // intent.putExtra("filme","The Witcher")
+            // intent.putExtra("classificacao",5)
+            // intent.putExtra("avaliacoes",9.2)
+
+            // Passando objeto:
             val filme = Filme(       // Usando Interface Serializable
                 "Sem limites",
                 "Teste",
@@ -48,22 +51,27 @@ class MainActivity : AppCompatActivity() {
         // Carregar dados...
         Log.i("Ciclo de vida: ", "onStart")
     }
+
     override fun onResume() {
         super.onResume()
         Log.i("Ciclo de vida: ", "onResume")
     }
+
     override fun onPause() {
         super.onPause()
         Log.i("Ciclo de vida: ", "onPause")
     }
+
     override fun onStop() {
         super.onStop()
         Log.i("Ciclo de vida: ", "onStop")
     }
+
     override fun onRestart() {
         super.onRestart()
         Log.i("Ciclo de vida: ", "onRestart")
     }
+
     override fun onDestroy() {
         Log.i("Ciclo de vida: ", "onDestroy")
         super.onDestroy()

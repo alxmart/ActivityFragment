@@ -10,6 +10,7 @@ class DetalhesActivity : AppCompatActivity() {
 
     lateinit var buttonFechar : Button
     lateinit var textFilme : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalhes)
@@ -18,20 +19,23 @@ class DetalhesActivity : AppCompatActivity() {
         textFilme = findViewById(R.id.text_filme)
 
         // Para recuperar o valor vindo da MainActivity, passado no intent:
+        //------------------------------------------------------------------
+
         val bundle = intent.extras //Todos os parâmetros passados
 
         if (bundle != null) {
-
-            /*val filme = bundle.getString("filme")
+            /*
+            val filme = bundle.getString("filme")
             val classificacao = bundle.getInt("classificacao")
-            val avaliacoes = bundle.getDouble("avaliacoes")*/
+            val avaliacoes = bundle.getDouble("avaliacoes")
+            */
 
             val filme = if(Build.VERSION.SDK_INT >= 33) { // Versão >= 33
                 //bundle.getSerializable("filme",Filme::class.java)
                 bundle.getParcelable("filme", Filme::class.java)
             } else {
                 //bundle.getSerializable("filme") as Filme
-                bundle.getParcelable("filme")
+                bundle.getParcelable("filme") //deprecated se usar um só parâmetro
             }
 
             //val filme = bundle.getSerializable("filme") as Filme
